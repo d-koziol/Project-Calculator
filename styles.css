@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    background: linear-gradient(109.6deg, rgb(36, 45, 57) 11.2%, rgb(16, 37, 60) 51.2%, rgb(0, 0, 0) 98.6%);
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    padding: 10px 10px 0px 10px;
+}
+
+#container {
+    border: 2px solid white;
+    width: 350px;
+    height: 400px;
+    margin-top: 10%;
+}
+
+#buttons-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+h2 {
+    height: 50px;
+    text-align: end;
+    font-size: 40px;
+    padding: 5px 5px 5px 5px;
+}
+
+footer {
+    position: fixed;
+    padding: 10px 10px 0px 10px;
+    bottom: 0;
+    height: 40px;
+    text-align: center;
+}
