@@ -1,3 +1,12 @@
+
+const buttons = document.querySelectorAll('.buttons');
+const displayb = document.querySelector('.output-num')
+const clear = document.querySelector('#clear');
+const solution = document.querySelector('#equals');
+const operators = document.querySelectorAll('.operator');
+const backSpace = document.querySelector('.backspace');
+
+
 function add(a,b){
     return a + b;
 }
