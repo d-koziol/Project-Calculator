@@ -6,30 +6,21 @@ const solution = document.querySelector('#equals');
 const operators = document.querySelectorAll('.operator');
 const backSpace = document.querySelector('.backspace');
 
-
 function add(a,b){
     return a + b;
 }
-console.log(add(2,3))
-
 
 function substract(a,b){
     return a - b;
 }
-console.log(substract(2,3))
-
 
 function multiply(a,b){
     return a * b;
 }
-console.log(multiply(2,3))
-
 
 function divide(a,b){
     return a / b;
 }
-console.log(divide(6,3))
-
 
 function operate (num1, num2, operator) {
     switch (operator) {
@@ -44,4 +35,13 @@ function operate (num1, num2, operator) {
     }
 };
 
-console.log(operate(1,2,"+"));
+let storedNumber = "";
+let firstEnteredNumber = "";
+
+for (const btn of buttons) {
+    btn.addEventListener("click", function (){
+        displayb.innerText += btn.value;
+        storedNumber += btn.value;
+
+    })
+}
