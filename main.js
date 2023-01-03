@@ -37,6 +37,7 @@ function operate (num1, num2, operator) {
 
 let storedNumber = "";
 let firstEnteredNumber = "";
+let chosenOperator = "";
 
 for (const btn of buttons) {
     btn.addEventListener("click", function (){
@@ -45,3 +46,18 @@ for (const btn of buttons) {
 
     })
 }
+
+operators.forEach((operator => {
+    operator.addEventListener("click", function (){
+        firstEnteredNumber = storedNumber;
+        chosenOperator = operator.textContent;
+        displayb.textContent = storedNumber + chosenOperator;
+        storedNumber = "";
+    })
+}));
+
+const calculate = () => {
+    const result = operate(parseFloat(firstEnteredNumber), parseFloat(storedNumber), chosenOperator);
+    displayb.textContent = result;
+    }
+  solution.addEventListener('click', calculate);
