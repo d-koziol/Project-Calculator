@@ -6,6 +6,10 @@ const solution = document.querySelector('#equals');
 const operators = document.querySelectorAll('.operator');
 const backSpace = document.querySelector('.backspace');
 
+solution.addEventListener('click', calculate);
+clear.addEventListener("click", clearScreen);
+backSpace.addEventListener("click", deleteNumber);
+
 function add(a,b){
     return a + b;
 }
@@ -31,6 +35,7 @@ function operate (num1, num2, operator) {
         case "*":
             return multiply(num1, num2);
         case "/":
+            if (b === 0 ) return null;
             return divide(num1, num2);
     }
 };
@@ -56,8 +61,16 @@ operators.forEach((operator => {
     })
 }));
 
-const calculate = () => {
+function calculate () {
     const result = operate(parseFloat(firstEnteredNumber), parseFloat(storedNumber), chosenOperator);
     displayb.textContent = result;
-    }
-  solution.addEventListener('click', calculate);
+};
+
+function clearScreen () {
+    displayb.textContent = "";
+    storedNumber = "";
+};
+
+function deleteNumber () {
+    displayb.textContent = displayb.textContent.toString().slice(0, -1);
+};
