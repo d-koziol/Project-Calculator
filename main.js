@@ -35,8 +35,10 @@ function operate (num1, num2, operator) {
         case "*":
             return multiply(num1, num2);
         case "/":
-            if (b === 0 ) return null;
+            if (num2 === 0 ) return null;
             return divide(num1, num2);
+            default:
+                return null;
     }
 };
 
@@ -48,7 +50,7 @@ for (const btn of buttons) {
     btn.addEventListener("click", function (){
         displayb.innerText += btn.value;
         storedNumber += btn.value;
-
+    
     })
 }
 
