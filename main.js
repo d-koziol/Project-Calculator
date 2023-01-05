@@ -16,21 +16,6 @@ solution.addEventListener('click', calculate);
 clear.addEventListener("click", clearScreen);
 backSpace.addEventListener("click", deleteNumber);
 
-function add(a,b){
-    return a + b;
-}
-
-function substract(a,b){
-    return a - b;
-}
-
-function multiply(a,b){
-    return a * b;
-}
-
-function divide(a,b){
-    return a / b;
-}
 
 function operate (num1, num2, operator) {
     switch (operator) {
@@ -115,5 +100,5 @@ function deleteNumber () {
 };
 
 function resultDisplay () {
-    
+
 }
