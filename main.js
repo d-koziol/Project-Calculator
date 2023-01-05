@@ -1,10 +1,16 @@
 
-const buttons = document.querySelectorAll('.buttons');
-const displayb = document.querySelector('.output-num')
-const clear = document.querySelector('#clear');
-const solution = document.querySelector('#equals');
-const operators = document.querySelectorAll('.operator');
-const backSpace = document.querySelector('.backspace');
+let storedNumber = "";
+let currentNumber = "";
+let chosenOperator = "";
+
+
+const buttons = document.querySelectorAll(".buttons");
+const previousDisplay = document.querySelector(".prev-num")
+const currentDisplay = document.querySelector(".curr-num")
+const clear = document.querySelector("#clear");
+const solution = document.querySelector("#equals");
+const operators = document.querySelectorAll(".operator");
+const backSpace = document.querySelector(".backspace");
 
 solution.addEventListener('click', calculate);
 clear.addEventListener("click", clearScreen);
@@ -42,37 +48,72 @@ function operate (num1, num2, operator) {
     }
 };
 
-let storedNumber = "";
-let firstEnteredNumber = "";
-let chosenOperator = "";
 
-for (const btn of buttons) {
-    btn.addEventListener("click", function (){
-        displayb.innerText += btn.value;
-        storedNumber += btn.value;
-    
-    })
+buttons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        keepNumber(e.target.textContent);
+    });
+});
+
+function keepNumber(number) {
+    if (currentNumber.length <= 11) {
+        currentNumber += number;
+        currentDisplay.textContent = currentNumber;
+    }
 }
 
-operators.forEach((operator => {
-    operator.addEventListener("click", function (){
-        firstEnteredNumber = storedNumber;
-        chosenOperator = operator.textContent;
-        displayb.textContent = storedNumber + chosenOperator;
-        storedNumber = "";
-    })
-}));
+operators.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        keepOperator(e.target.textContent);
+    });
+});
 
-function calculate () {
-    const result = operate(parseFloat(firstEnteredNumber), parseFloat(storedNumber), chosenOperator);
-    displayb.textContent = result;
-};
+function keepOperator(oprtr) {
+    operator = oprtr;
+    storedNumber = currentNumber;
+    previousDisplay.textContent = storedNumber + " " + operator;
+    currentNumber = "";
+    currentDisplay.textContent = "";
+}
+
+function calculate() {
+    storedNumber = Number(storedNumber);
+    currentNumber = Number(currentNumber);
+
+    if (operator === "+") {
+        storedNumber += currentNumber;
+    } else if
+        (operator === "-"){
+            storedNumber -= currentNumber;
+    } else if
+        (operator === "*") {
+            storedNumber *= currentNumber;
+    } else if (operator === "/") {
+        if (currentNumber <= 0){
+            storedNumber = "Error";
+            previousDisplay.textContent = "";
+            currentDisplay.textContent = storedNumber;
+            operator = "";
+            return;
+        }
+            storedNumber /= currentNumber;
+    }
+    storedNumber = storedNumber.toString();
+    previousDisplay.textContent = "";
+    currentDisplay.textContent = storedNumber;
+}
 
 function clearScreen () {
-    displayb.textContent = "";
+    currentDisplay.textContent = "";
+    previousDisplay.textContent = "";
     storedNumber = "";
+    currentNumber = "";
 };
 
 function deleteNumber () {
-    displayb.textContent = displayb.textContent.toString().slice(0, -1);
+    currentDisplay.textContent = currentDisplay.textContent.toString().slice(0, -1);
 };
+
+function resultDisplay () {
+    
+}
