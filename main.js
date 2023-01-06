@@ -12,26 +12,9 @@ const solution = document.querySelector("#equals");
 const operators = document.querySelectorAll(".operator");
 const backSpace = document.querySelector(".backspace");
 
-solution.addEventListener('click', calculate);
 clear.addEventListener("click", clearScreen);
 backSpace.addEventListener("click", deleteNumber);
-
-
-function operate (num1, num2, operator) {
-    switch (operator) {
-        case "+":
-            return add(num1, num2);
-        case "-":
-            return substract(num1, num2);
-        case "*":
-            return multiply(num1, num2);
-        case "/":
-            if (num2 === 0 ) return null;
-            return divide(num1, num2);
-            default:
-                return null;
-    }
-};
+solution.addEventListener('click', calculate);
 
 
 buttons.forEach(btn => {
@@ -76,29 +59,49 @@ function calculate() {
     } else if (operator === "/") {
         if (currentNumber <= 0){
             storedNumber = "Error";
-            previousDisplay.textContent = "";
-            currentDisplay.textContent = storedNumber;
-            operator = "";
+            resultDisplay();
             return;
         }
             storedNumber /= currentNumber;
     }
+    storedNumber = roundNumber(storedNumber);
     storedNumber = storedNumber.toString();
-    previousDisplay.textContent = "";
-    currentDisplay.textContent = storedNumber;
+    resultDisplay();
 }
 
 function clearScreen () {
-    currentDisplay.textContent = "";
+    currentDisplay.textContent = "0";
     previousDisplay.textContent = "";
     storedNumber = "";
     currentNumber = "";
+    chosenOperator = "";
 };
 
 function deleteNumber () {
-    currentDisplay.textContent = currentDisplay.textContent.toString().slice(0, -1);
-};
+    if (currentNumber !== "") {
+      currentNumber = currentNumber.slice(0, -1);
+      currentDisplay.textContent = currentNumber;
+      if (currentNumber === "") {
+        currentDisplay.textContent = "0";
+      }
+    }
+    if (currentNumber === "" && storedNumber !== "" && chosenOperator === "") {
+      storedNumber = storedNumber.slice(0, -1);
+      currentDisplay.textContent = storedNumber;
+    }
+  }
+
+function roundNumber (num) {
+    return Math.round(num * 10000) / 10000;
+}
 
 function resultDisplay () {
-
+    if (storedNumber.length <= 11) {
+        currentDisplay.textContent = storedNumber;
+    } else {
+        currentDisplay.textContent = storedNumber.slice(0, 11) + "...";
+    }
+    previousDisplay.textContent = "";
+    chosenOperator = "";
+    currentNumber = "";
 }

@@ -37,6 +37,7 @@ h1 {
     width: 350px;
     height: 440px;
     margin-top: 10%;
+    border-radius: 5px;
 }
 
 #clear-buttons {
@@ -52,6 +53,7 @@ h1 {
 button {
     height: 68px;
     font-size: 25px;
+    border-radius: 5px;
 }
 h2 {
     height: 50px;
@@ -67,3 +69,4 @@ footer {
     height: 40px;
     text-align: center;
 }
+
