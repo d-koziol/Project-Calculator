@@ -43,18 +43,51 @@ h1 {
 #clear-buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    
 }
 
 #buttons-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+   
 }
 
 button {
     height: 68px;
     font-size: 25px;
-    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #1364b4;
+    outline: none;
+    transition: 1s ease-in-out;
 }
+
+.btn:hover {
+    transition: 0.5s ease-in-out;
+    background: #a2cbf3;
+}
+  
+.btn:hover svg {
+    stroke-dashoffset: -480;
+}
+  
+.btn span {
+    color: white;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    fill: none;
+    stroke: #fff;
+    stroke-dasharray: 150 480;
+    stroke-dashoffset: 150;
+    transition: 0.5s ease-in-out;
+}
+
+
 h2 {
     height: 50px;
     text-align: end;
