@@ -95,6 +95,24 @@ h2 {
     padding: 5px 5px 5px 5px;
 }
 
+#equals {
+    background-color: yellow;
+}
+
+#equals:hover {
+    transition: 0.5s ease-in-out;
+    background: #a2cbf3;
+}
+
+#clear {
+    background-color: #a2cbf3;
+}
+
+#clear:hover {
+    transition: 0.5s ease-in-out;
+    background: yellow;
+}
+
 footer {
     position: fixed;
     padding: 10px 10px 0px 10px;
